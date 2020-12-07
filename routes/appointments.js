@@ -29,7 +29,7 @@ router.post(
   [
     auth,
     // [
-    //   check('details', 'Details is required')
+    //   check('detail', 'Details is required')
     //     .not()
     //     .isEmpty(),
     // ],
@@ -63,11 +63,11 @@ router.post(
 // @desc      Update appointment
 // @access    Private
 router.put('/:id', auth, async (req, res) => {
-  const {details} = req.body;
+  const {detail} = req.body;
 
   // Build appointment object
   const appointmentFields = {};
-  if (details) appointmentFields.details = details;
+  if (detail) appointmentFields.detail = detail;
 
   try {
     let appointment = await Appointment.findById(req.params.id);

@@ -8,6 +8,7 @@ const Doctors = () => {
   const doctorContext = useContext(DoctorContext);
 
   const { doctors, filtered, getDoctors, loading } = doctorContext;
+  
 
   useEffect(() => {
     getDoctors();

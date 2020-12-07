@@ -17,7 +17,7 @@ import {
 
 const AppointmentState = props => {
   const initialState = {
-    appointments: null,
+    appointments: [],
     current: null,
     filtered: null,
     error: null

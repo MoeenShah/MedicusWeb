@@ -79,7 +79,7 @@ const DoctorState = props => {
         type: DOCTOR_ERROR,
         payload: err.response.msg
       });
-    }
+    } 
   };
 
   // Update Doctor

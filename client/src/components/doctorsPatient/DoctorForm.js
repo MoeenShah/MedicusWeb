@@ -13,46 +13,43 @@ const DoctorForm = () => {
   const { addAppointment, updateAppointment, clearCurrentAppointment, currentAppointment } = appointmentContext;
   const { isAuthenticated, logout, user, loadUser } = authContext;
 
+  const [appointment, setAppointment] = useState({
+    doctor: current?._d,
+    detail: '',
+
+  });
+
   useEffect(() => {
     if (current !== null) {
-      setAppointment(current);
+      setAppointment({...appointment,doctor:current?._id});
     } else {
       setAppointment({
-        name: '',
         detail: '',
-        patient: ''
       });
     }
   }, [appointmentContext, current]);
 
-  const [appointment, setAppointment] = useState({
-    name: current,
-    detail: '',
-    patient: user
 
-  });
-
-  const { name, detail } = appointment;
+  const { detail } = appointment;
+  const name = current?.name;
 
   const onChange = e =>{
-    setAppointment([{ ...current.name, [e.target.name]: e.target.value },{detail: detail}]);
-
+    // setAppointment([{ ...current.name, [e.target.name]: e.target.value },{detail: detail}]);
+    setAppointment({...appointment,detail:e.target.value})
   }
 
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
       updateAppointment(appointment);
-
     } else {
       addAppointment(appointment);
-
     }
     clearAll();
   };
 
   const clearAll = () => {
-    clearCurrentAppointment();
+    clearCurrent();
   };
 
   return (
@@ -65,7 +62,8 @@ const DoctorForm = () => {
         placeholder='Name'
         name='name'
         value={name}
-        onChange={onChange}
+        disabled
+        // onChange={onChange}
       />
       {/* <input
         type='email'

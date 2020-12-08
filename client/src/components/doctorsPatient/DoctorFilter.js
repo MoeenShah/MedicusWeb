@@ -1,36 +1,36 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import DoctorContext from '../../context/doctor/doctorContext';
+import AppointmentContext from '../../context/appointment/appointmentContext';
 
-const DoctorFilter = () => {
-  const doctorContext = useContext(DoctorContext);
-  const text = useRef('');
+const AppointmentFilter = () => {
+  const appointmentContext = useContext(AppointmentContext);
+  const text1 = useRef('');
 
-  const { filterDoctors, clearFilter, filtered } = doctorContext;
+  const { filterAppointments, clearFilterAppointments, filteredAppointments } = appointmentContext;
 
   useEffect(() => {
-    if (filtered === null) {
-      text.current.value = '';
+    if (filteredAppointments === null) {
+      text1.current.value = '';
     }
   });
 
-  const onChange = e => {
-    if (text.current.value !== '') {
-      filterDoctors(e.target.value);
+  const onChangeAppointment = e1 => {
+    if (text1.current.value !== '') {
+      filterAppointments(e1.target.value);
     } else {
-      clearFilter();
+      clearFilterAppointments();
     }
   };
 
   return (
     <form>
       <input
-        ref={text}
+        ref={text1}
         type='text'
-        placeholder='Filter Doctors Here'
-        onChange={onChange}
+        placeholder='Filter Appointments Here'
+        onChange={onChangeAppointment}
       />
     </form>
   );
 };
 
-export default DoctorFilter;
+export default AppointmentFilter;

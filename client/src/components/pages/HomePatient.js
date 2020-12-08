@@ -1,8 +1,9 @@
 import React from 'react';
 import Doctors from '../doctorsPatient/Doctors';
 import DoctorForm from '../doctorsPatient/DoctorForm';
-import DoctorFilter from '../doctorsPatient/DoctorFilter';
+import DoctorFilter from '../doctors/DoctorFilter';
 import Appointments from '../doctorsPatient/Appointments';
+import AppointmentFilter from '../doctorsPatient/DoctorFilter';
 
 const HomePatient = () => {
   return (
@@ -17,7 +18,7 @@ const HomePatient = () => {
       </div>
       <div>
       <h2 className='text-primary'>Appointments</h2>
-        <DoctorFilter />
+        <AppointmentFilter />
         <Appointments />
       </div>
     </div>

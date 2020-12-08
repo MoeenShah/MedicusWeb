@@ -2,13 +2,16 @@ import {
     GET_APPOINTMENTS,
     ADD_APPOINTMENT,
     DELETE_APPOINTMENT,
-    SET_CURRENT_APP,
-    CLEAR_CURRENT_APP,
+    SET_CURRENT_APPOINTMENT,
+    CLEAR_CURRENT_APPOINTMENT,
     UPDATE_APPOINTMENT,
     FILTER_APPOINTMENTS,
-    CLEAR_FILTER_APP,
+    CLEAR_FILTER_APPOINTMENTS,
     APPOINTMENT_ERROR,
-    CLEAR_APPOINTMENTS
+    CLEAR_APPOINTMENTS,
+    
+    
+    
   } from '../types';
   
   export default (state, action) => {
@@ -45,37 +48,37 @@ import {
         return {
           ...state,
           appointments: null,
-          filtered: null,
-          error: null,
-          current: null
+          filteredappointment: null,
+          errorappointment: null,
+          currentappointment: null
         };
-      case SET_CURRENT_APP:
+      case SET_CURRENT_APPOINTMENT:
         return {
           ...state,
-          current: action.payload
+          currentappointment: action.payload
         };
-      case CLEAR_CURRENT_APP:
+      case CLEAR_CURRENT_APPOINTMENT:
         return {
           ...state,
-          current: null
+          currentappointment: null
         };
       case FILTER_APPOINTMENTS:
         return {
           ...state,
-          filtered: state.appointments.filter(appointment => {
+          filteredappointment: state.appointments.filter(appointment => {
             const regex = new RegExp(`${action.payload}`, 'gi');
-            return appointment.name.match(regex) || appointment.domain.match(regex);
+            return appointment.detail.match(regex);
           })
         };
-      case CLEAR_FILTER_APP:
+      case CLEAR_FILTER_APPOINTMENTS:
         return {
           ...state,
-          filtered: null
+          filteredappointment: null
         };
       case APPOINTMENT_ERROR:
         return {
           ...state,
-          error: action.payload
+          errorappointment: action.payload
         };
       default:
         return state;

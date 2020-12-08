@@ -8,9 +8,9 @@ import AppointmentContext from '../../context/appointment/appointmentContext';
 const Appointment = () => {
   const doctorContext = useContext(DoctorContext);
   const appointmentContext = useContext(AppointmentContext);
-  const { getAppointments, filtered, appointments,loading } = appointmentContext;
+  const { getAppointments, filteredappointment, appointments,loading } = appointmentContext;
 
-  // const { doctors, filtered, getDoctors, loading } = doctorContext;
+  // const { doctors, filteredappointment, getDoctors, loading } = doctorContext;
 
   useEffect(() => {
     getAppointments();
@@ -25,8 +25,8 @@ const Appointment = () => {
     <Fragment>
       {appointments !== null && !loading ? (
         <TransitionGroup>
-          {filtered !== null
-            ? filtered.map(appointment => (
+          {filteredappointment !== null
+            ? filteredappointment.map(appointment => (
                 <CSSTransition
                   key={appointment._id}
                   timeout={500}

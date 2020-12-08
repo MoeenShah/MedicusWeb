@@ -15,16 +15,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border-radius: 25;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color:#a8dcff;
+  background: radial-gradient(circle, white, #003699);
+  /* background: linear-gradient(white,#003699); */
+  /* background-color:#a8dcff; */
   color: #333;
   margin-bottom:100px;
 }
+
 
 a {
   color: var(--primary-color);
@@ -49,7 +53,7 @@ img {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  border-radius: 5;
+  border-radius: 15;
 }
 
 /* Text Styles*/
@@ -99,7 +103,8 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
-  border-radius: 5;
+  border-radius: 15;
+
 }
 
 /* List */

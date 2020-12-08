@@ -50,7 +50,7 @@ const RegisterPatient = props => {
   return (
     <div className='form-container'>
       <h1>
-        Account <span className='text-primary'>RegisterPatient</span>
+        Register <span className='text-primary'>Patient</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className='form-group'>

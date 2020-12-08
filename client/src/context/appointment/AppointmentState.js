@@ -6,11 +6,11 @@ import {
   GET_APPOINTMENTS,
   ADD_APPOINTMENT,
   DELETE_APPOINTMENT,
-  SET_CURRENT,
-  CLEAR_CURRENT,
+  SET_CURRENT_APPOINTMENT,
+  CLEAR_CURRENT_APPOINTMENT,
   UPDATE_APPOINTMENT,
   FILTER_APPOINTMENTS,
-  CLEAR_FILTER,
+  CLEAR_FILTER_APPOINTMENTS,
   APPOINTMENT_ERROR,
   CLEAR_APPOINTMENTS,
 } from '../types';
@@ -18,9 +18,9 @@ import {
 const AppointmentState = props => {
   const initialState = {
     appointments: [],
-    current: null,
-    filtered: null,
-    error: null
+    currentappointment: null,
+    filteredappointment: null,
+    errorappointment: null
   };
 
   const [state, dispatch] = useReducer(appointmentReducer, initialState);
@@ -116,12 +116,12 @@ const AppointmentState = props => {
 
   // Set Current Appointment
   const setCurrentAppointment = appointment => {
-    dispatch({ type: SET_CURRENT, payload: appointment });
+    dispatch({ type: SET_CURRENT_APPOINTMENT, payload: appointment });
   };
 
   // Clear Current Appointment
   const clearCurrentAppointment = () => {
-    dispatch({ type: CLEAR_CURRENT });
+    dispatch({ type: CLEAR_CURRENT_APPOINTMENT });
   };
 
   // Filter Appointments
@@ -130,24 +130,24 @@ const AppointmentState = props => {
   };
 
   // Clear Filter
-  const clearFilter = () => {
-    dispatch({ type: CLEAR_FILTER });
+  const clearFilterAppointments = () => {
+    dispatch({ type: CLEAR_FILTER_APPOINTMENTS });
   };
 
   return (
     <AppointmentContext.Provider
       value={{
         appointments: state.appointments,
-        current: state.current,
-        filtered: state.filtered,
-        error: state.error,
+        currentappointment: state.currentappointment,
+        filteredappointment: state.filteredappointment,
+        errorappointment: state.errorappointment,
         addAppointment,
         deleteAppointment,
         setCurrentAppointment,
         clearCurrentAppointment,
         updateAppointment,
         filterAppointments,
-        clearFilter,
+        clearFilterAppointments,
         getAppointments,
         clearAppointments
       }}

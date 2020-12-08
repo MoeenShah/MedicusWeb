@@ -11,6 +11,20 @@ const Appointment = require('../models/Appointment');
 // @access    Private
 router.get('/', auth, async (req, res) => {
   try {
+    const appointments = await Appointment.find({patient: req.patient.id}).populate("doctor");
+    res.json(appointments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+// @route     GET api/appointments for web
+// @desc      Get all users appointments for web
+// @access    Private
+router.get('/web', auth, async (req, res) => {
+  try {
     const appointments = await Appointment.find({patient: req.patient.id}).sort({
       date: -1,
     });

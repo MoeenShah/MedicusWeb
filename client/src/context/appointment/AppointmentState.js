@@ -28,7 +28,7 @@ const AppointmentState = props => {
   // Get Appointments
   const getAppointments = async () => {
     try {
-      const res = await axios.get('/api/appointments');
+      const res = await axios.get('/api/appointments/web');
 
       dispatch({
         type: GET_APPOINTMENTS,

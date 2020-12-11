@@ -56,6 +56,7 @@ router.post(
        Doctor.find({name: new RegExp(query, 'i')}, function(err, doc) {
           return res.json(doc);
         });
+        // salman bhai
         // doctors.filter(async doctor => {
         //   const regex = new RegExp('^'+query+'$', "i");
         //   const result = doctor.name.match(regex) || doctor.domain.match(regex);

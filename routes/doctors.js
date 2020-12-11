@@ -48,12 +48,12 @@ router.post(
     }
     const {query} = req.body;
     try {
-      let doctors = await Doctor.find();
-      if (!doctors) {
-        return res.status(400).json({msg: 'No doctor exists'});
-      }
-      else{
-       Doctor.findOne({name: new RegExp(query, 'i')}, function(err, doc) {
+      // let doctors = await Doctor.find();
+      // if (!doctors) {
+      //   return res.status(400).json({msg: 'No doctor exists'});
+      // }
+      // else{
+       Doctor.find({name: new RegExp(query, 'i')}, function(err, doc) {
           return res.json(doc);
         });
         // doctors.filter(async doctor => {
@@ -65,7 +65,7 @@ router.post(
     
         //   return res.json(doctors2);
         // })
-      }
+      // }
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

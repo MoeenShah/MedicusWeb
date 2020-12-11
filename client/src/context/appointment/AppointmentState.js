@@ -4,6 +4,7 @@ import AppointmentContext from './appointmentContext';
 import appointmentReducer from './appointmentReducer';
 import {
   GET_APPOINTMENTS,
+  GET_APPOINTMENTS_WEB,
   ADD_APPOINTMENT,
   DELETE_APPOINTMENT,
   SET_CURRENT_APPOINTMENT,
@@ -41,6 +42,23 @@ const AppointmentState = props => {
       });
     }
   };
+
+    // Get Appointments
+    const getAppointmentsweb = async () => {
+      try {
+        const res = await axios.get('/api/appointments/webdoctor');
+  
+        dispatch({
+          type: GET_APPOINTMENTS_WEB,
+          payload: res.data
+        });
+      } catch (err) {
+        dispatch({
+          type: APPOINTMENT_ERROR,
+          payload: err.response.msg
+        });
+      }
+    };
 
   // Add Appointment
   const addAppointment = async appointment => {
@@ -149,7 +167,8 @@ const AppointmentState = props => {
         filterAppointments,
         clearFilterAppointments,
         getAppointments,
-        clearAppointments
+        clearAppointments,
+        getAppointmentsweb
       }}
     >
       {props.children}

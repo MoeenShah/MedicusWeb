@@ -81,17 +81,17 @@ router.post(
 // @route     GET api/patients
 // @desc      Get all patients
 // @access    Private
-// router.get('/', auth, async (req, res) => {
-//   try {
-//     const patients = await Patient.find().sort({
-//       date: -1,
-//     });
-//     res.json(patients);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
+router.get('/', auth, async (req, res) => {
+  try {
+    const patients = await Patient.find().sort({
+      date: -1,
+    });
+    res.json(patients);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route     POST api/patients
 // @desc      Add new patient

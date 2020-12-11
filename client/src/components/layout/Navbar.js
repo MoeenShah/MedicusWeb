@@ -49,6 +49,13 @@ const Navbar = ({ title, icon }) => {
         <Link to='/loginPatient'>Login Patient</Link>
       </li>
       <li>
+        <Link to='/registerDoctor'>Register Doctor</Link>
+      </li>
+
+      <li>
+        <Link to='/loginDoctor'>Login Doctor</Link>
+      </li>
+      <li>
         <Link to='/about'>About</Link>
       </li>
     </Fragment>

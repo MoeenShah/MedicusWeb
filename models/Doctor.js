@@ -24,6 +24,10 @@ const DoctorSchema = mongoose.Schema({
   domain: {
     type: String,
   },
+  bank: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'bank'
+  },
   date: {
     type: Date,
     default: Date.now

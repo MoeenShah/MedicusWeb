@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/authp');
+const authd = require('../middleware/authd');
+
 const {check, validationResult} = require('express-validator');
 
 const Patient = require('../models/Patient');
@@ -21,11 +23,26 @@ router.get('/', auth, async (req, res) => {
 
 
 // @route     GET api/appointments for web
-// @desc      Get all users appointments for web
+// @desc      Get all patients appointments for web
 // @access    Private
 router.get('/web', auth, async (req, res) => {
   try {
     const appointments = await Appointment.find({patient: req.patient.id}).sort({
+      date: -1,
+    });
+    res.json(appointments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route     GET api/appointments for web
+// @desc      Get all doctors appointments for web
+// @access    Private
+router.get('/webdoctor', authd, async (req, res) => {
+  try {
+    const appointments = await Appointment.find({doctor: req.doctor.id}).sort({
       date: -1,
     });
     res.json(appointments);

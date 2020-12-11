@@ -24,6 +24,56 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route     POST api/doctors/searchdoctor
+// @desc      Search Doctors, mobile application
+// @access    Private
+router.post(
+  '/searchdoctor',
+  [
+    auth,
+    [
+      check('query', 'Query text is required')
+        .not()
+        .isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const doctors = await Doctor.find().sort({
+        date: -1,
+      });
+
+      return res.json(doctors);
+    }
+    const {query} = req.body;
+    try {
+      let doctors = await Doctor.find();
+      if (!doctors) {
+        return res.status(400).json({msg: 'No doctor exists'});
+      }
+      else{
+       Doctor.findOne({name: new RegExp(query, 'i')}, function(err, doc) {
+          return res.json(doc);
+        });
+        // doctors.filter(async doctor => {
+        //   const regex = new RegExp('^'+query+'$', "i");
+        //   const result = doctor.name.match(regex) || doctor.domain.match(regex);
+        //   let doctors2 = await Doctor.find({name : result}).sort({
+        //     date: -1,
+        //   });
+    
+        //   return res.json(doctors2);
+        // })
+      }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  },
+);
+
+
 // @route     POST api/doctors
 // @desc      Add new doctor
 // @access    Private

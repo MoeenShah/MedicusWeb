@@ -56,6 +56,22 @@ const AuthState = props => {
     }
   };
 
+     // Load User Doctor
+     const loadUserdoctor = async () => {
+      setAuthToken(localStorage.token);
+  
+      try {
+        const res = await axios.get('/api/authdoctor');
+  
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data
+        });
+      } catch (err) {
+        dispatch({ type: AUTH_ERROR });
+      }
+    };
+
   // Register User
   const register = async formData => {
     const config = {
@@ -105,6 +121,32 @@ const AuthState = props => {
         });
       }
     };
+
+
+        // Register User Doctor
+        const registerdoctor = async formData => {
+          const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+      
+          try {
+            const res = await axios.post('/api/doctors', formData, config);
+      
+            dispatch({
+              type: REGISTER_SUCCESS,
+              payload: res.data
+            });
+      
+            loadUserdoctor();
+          } catch (err) {
+            dispatch({
+              type: REGISTER_FAIL,
+              payload: err.response.data.msg
+            });
+          }
+        };
 
   // Login User
   const login = async formData => {
@@ -156,6 +198,31 @@ const AuthState = props => {
       }
     };
 
+        // Login User Doctor
+        const logindoctor = async formData => {
+          const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+      
+          try {
+            const res = await axios.post('/api/authdoctor', formData, config);
+      
+            dispatch({
+              type: LOGIN_SUCCESS,
+              payload: res.data
+            });
+      
+            loadUserdoctor();
+          } catch (err) {
+            dispatch({
+              type: LOGIN_FAIL,
+              payload: err.response.data.msg
+            });
+          }
+        };
+
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
@@ -172,10 +239,13 @@ const AuthState = props => {
         error: state.error,
         register,
         registerpatient,
+        registerdoctor,
         loadUser,
         loadUserpatient,
+        loadUserdoctor,
         login,
         loginpatient,
+        logindoctor,
         logout,
         clearErrors
       }}

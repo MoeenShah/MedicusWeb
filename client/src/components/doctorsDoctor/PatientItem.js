@@ -1,33 +1,23 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import DoctorContext from '../../context/doctor/doctorContext';
+import PatientContext from '../../context/patient/patientContext';
 
-const DoctorItem = ({ doctor }) => {
-  const doctorContext = useContext(DoctorContext);
-  const { deleteDoctor, setCurrent, clearCurrent } = doctorContext;
+const PatientItem = ({ patient }) => {
+  const patientContext = useContext(PatientContext);
+  const { deletePatient, setCurrentpatient, clearCurrentpatient } = patientContext;
 
-  const { _id, name, email, phone, domain, type, bank } = doctor;
+  const { _id, name, email} = patient;
 
   const onDelete = () => {
-    deleteDoctor(_id);
-    clearCurrent();
+    deletePatient(_id);
+    clearCurrentpatient();
   };
 
-  var bankinfo = "";
-  const bankCheck = (bank) => {
-    if (bank == null) {
-      return bankinfo = "No bank info found";
-    }
-    else{
-      return bankinfo = bank.expirydate;
-    }
-  }
-  bankCheck();  
   return (
     <div className='card bg-light'>
       <h3 className='text-primary text-left'>
         {name}{' '}
-        <span
+        {/* <span
           style={{ float: 'right' }}
           className={
             'badge ' +
@@ -35,7 +25,7 @@ const DoctorItem = ({ doctor }) => {
           }
         >
           {type.charAt(0).toUpperCase() + type.slice(1)}
-        </span>
+        </span> */}
       </h3>
       <ul className='list'>
         {email && (
@@ -43,7 +33,7 @@ const DoctorItem = ({ doctor }) => {
             <i className='fas fa-envelope-open' /> {email}
           </li>
         )}
-        {phone && (
+        {/* {phone && (
           <li>
             <i className='fas fa-phone' /> {phone}
           </li>
@@ -52,30 +42,26 @@ const DoctorItem = ({ doctor }) => {
           <li>
             <i className='fas fa-tree' /> {domain}
           </li>
-        )}
-        {bankinfo && (
-          <li>
-            <i className='fas fa-money-bill-alt' /> {bankinfo}
-          </li>
-        )}
+        )} */}
       </ul>
       <p>
         <button
           className='btn btn-dark btn-sm'
-          onClick={() => setCurrent(doctor)}
+          onClick={() => setCurrentpatient(patient)}
         >
-          Edit
+          Appoint
         </button>
-        <button className='btn btn-danger btn-sm' onClick={onDelete}>
+        { <button className='btn btn-danger btn-sm' onClick={onDelete}>
           Delete
         </button>
-      </p>
+}
+       </p> 
     </div>
   );
 };
 
-DoctorItem.propTypes = {
-  doctor: PropTypes.object.isRequired
+PatientItem.propTypes = {
+  patient: PropTypes.object.isRequired
 };
 
-export default DoctorItem;
+export default PatientItem;

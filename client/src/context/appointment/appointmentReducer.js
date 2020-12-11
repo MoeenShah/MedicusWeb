@@ -1,5 +1,6 @@
 import {
     GET_APPOINTMENTS,
+    GET_APPOINTMENTS_WEB,
     ADD_APPOINTMENT,
     DELETE_APPOINTMENT,
     SET_CURRENT_APPOINTMENT,
@@ -22,6 +23,12 @@ import {
           appointments: action.payload,
           loading: false
         };
+        case GET_APPOINTMENTS_WEB:
+          return {
+            ...state,
+            appointments: action.payload,
+            loading: false
+          };
       case ADD_APPOINTMENT:
         return {
           ...state,

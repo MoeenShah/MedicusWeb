@@ -2,21 +2,24 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import AppointmentItem from './AppointmentItem';
 import Spinner from '../layout/Spinner';
-import DoctorContext from '../../context/doctor/doctorContext';
+import PatientContext from '../../context/patient/patientContext';
 import AppointmentContext from '../../context/appointment/appointmentContext';
 
 const Appointment = () => {
-  const doctorContext = useContext(DoctorContext);
+  const patientContext = useContext(PatientContext);
   const appointmentContext = useContext(AppointmentContext);
-  const { getAppointments, filteredappointment, appointments,loading } = appointmentContext;
+  const { getAppointmentsweb, filteredappointment, appointments,loading } = appointmentContext;
 
-  // const { doctors, filteredappointment, getDoctors, loading } = doctorContext;
+  // const { patients, getPatients} = patientContext;
 
   useEffect(() => {
-    getAppointments();
+    getAppointmentsweb();
+    // getPatients();
+    
     // eslint-disable-next-line
   }, []);
-  
+  // console.log(patients);
+
   if (appointments !== null && appointments.length === 0 && !loading ) {
     return <h4>Add an appointment</h4>;
   }

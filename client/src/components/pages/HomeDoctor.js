@@ -11,11 +11,11 @@ const HomeDoctor = () => {
       {/* <div>
         <DoctorForm />
       </div> */}
-      <div>
-      {/* <h2 className='text-primary'>Angelus</h2> */}
-        {/* <DoctorFilter /> */}
+      {/* <div>
+      <h2 className='text-primary'>Patients</h2>
+        <DoctorFilter />
         <Patients />
-      </div>
+      </div> */}
       <div>
       <h2 className='text-primary'>Appointments</h2>
         {/* <AppointmentFilter /> */}

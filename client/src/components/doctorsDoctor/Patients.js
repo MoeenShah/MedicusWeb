@@ -23,7 +23,7 @@ const Patients = () => {
     <Fragment>
       {patients !== null && !loading ? (
         <TransitionGroup>
-          {filteredpatients !== null
+          {filteredpatients !== null && false
             ? filteredpatients.map(patient => (
                 <CSSTransition
                   key={patient._id}

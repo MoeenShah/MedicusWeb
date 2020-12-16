@@ -4,29 +4,29 @@ import PatientContext from "../../context/patient/patientContext";
 import AppointmentContext from "../../context/appointment/appointmentContext";
 
 const AppointmentItem = ({ appointment }) => {
-  const patientContext = useContext(PatientContext);
+  // const patientContext = useContext(PatientContext);
   const appointmentContext = useContext(AppointmentContext);
 
-  const { patients, clearCurrentpatient, getPatients} = patientContext;
+  // const { patients, clearCurrentpatient, getPatients} = patientContext;
   const { deleteAppointment, setCurrentAppointment, clearCurrentAppointment, appointments } = appointmentContext;
 
   const { _id, patient, detail, date } = appointment;
 
-  const [pat, setPat] = useState(null)
-  console.log(appointment);
+  // const [pat, setPat] = useState(null)
+  // console.log(appointment);
   
-  console.log(patients);
+  // console.log(patients);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const pati = patients.filter((val) => val._id === patient);
-    setPat(pati[0])
-    return () => {};
-  }, [patient]);
+  //   const pati = patients?.filter((val) => val._id === patient);
+  //   setPat(pati[0])
+  //   return () => {};
+  // }, [patient]);
 
   const onDelete = () => {
     deleteAppointment(_id);
-    clearCurrentpatient();
+    // clearCurrentpatient();
   };
 
   const URL = "https://moeenvideo.herokuapp.com/b4af6a80-8d7f-4bbe-8ea1-df3fae0f83dc";
@@ -47,7 +47,7 @@ const AppointmentItem = ({ appointment }) => {
 
   return (
     <div className="card bg-light">
-      <h3 className="text-primary text-left">{pat?.name}</h3>
+      <h3 className="text-primary text-left">{patient?.name}</h3>
       {/* <p>{detail}</p> */}
       {/* <p>{}</p> */}
       <ul className='list'>
@@ -61,11 +61,11 @@ const AppointmentItem = ({ appointment }) => {
             <i className='fas fa-info-circle' /> {detail}
           </li>
         )}
-        {/* // {domain && ( */}
-        {/* //   <li>
-        //     <i className='fas fa-tree' /> {domain}
-        //   </li> }
-        )} */}
+         {/* {patient && (
+         <li>
+        <i className='fas fa-tree' /> {patient?.name}
+        </li> 
+        )}  */}
       </ul>
       <p>
         <button

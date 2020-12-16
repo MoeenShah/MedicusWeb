@@ -21,6 +21,19 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route     GET api/appointments
+// @desc      Get all users appointments
+// @access    Private
+router.get('/webdoctor', authd, async (req, res) => {
+  try {
+    const appointments = await Appointment.find({doctor: req.doctor.id}).populate("patient");
+    res.json(appointments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 // @route     GET api/appointments for web
 // @desc      Get all patients appointments for web
@@ -40,17 +53,17 @@ router.get('/web', auth, async (req, res) => {
 // @route     GET api/appointments for web
 // @desc      Get all doctors appointments for web
 // @access    Private
-router.get('/webdoctor', authd, async (req, res) => {
-  try {
-    const appointments = await Appointment.find({doctor: req.doctor.id}).sort({
-      date: -1,
-    });
-    res.json(appointments);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+// router.get('/webdoctor', authd, async (req, res) => {
+//   try {
+//     const appointments = await Appointment.find({doctor: req.doctor.id}).sort({
+//       date: -1,
+//     });
+//     res.json(appointments);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 // @route     POST api/appointments
 // @desc      Add new appointment

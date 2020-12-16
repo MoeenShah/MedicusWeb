@@ -14,7 +14,7 @@ const Appointment = () => {
 
   useEffect(() => {
     getAppointmentsweb();
-    // getPatients();
+    // getPatients(); 
     
     // eslint-disable-next-line
   }, []);
@@ -28,7 +28,7 @@ const Appointment = () => {
     <Fragment>
       {appointments !== null && !loading ? (
         <TransitionGroup>
-          {filteredappointment !== null
+          {filteredappointment !== null && false
             ? filteredappointment.map(appointment => (
                 <CSSTransition
                   key={appointment._id}

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
+import { Link } from 'react-router-dom';
 
 const Login = props => {
   const alertContext = useContext(AlertContext);
@@ -43,6 +44,7 @@ const Login = props => {
   };
 
   return (
+    <div className='grid-2'>
     <div className='form-container'>
       <h1>
         Admin <span className='text-primary'>Login</span>
@@ -76,6 +78,10 @@ const Login = props => {
           className='btn btn-primary btn-block'
         />
       </form>
+    </div>
+    <div className='text-center-apply'>
+    <Link to='/doctorapply'><h1 >Want to an Angelus? Great! Apply here now.</h1></Link>
+    </div>
     </div>
   );
 };

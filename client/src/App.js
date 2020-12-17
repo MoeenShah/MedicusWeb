@@ -23,6 +23,7 @@ import AppointmentState from './context/appointment/AppointmentState';
 // import AuthStatePatient from './context/authPatient/AuthState';
 import AlertState from './context/alert/AlertState';
 import './App.css';
+import DoctorApply from './components/pages/DoctorApply';
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
                   <PrivateRoute exact path='/Patient' component={HomePatient} />
                   <PrivateRoute exact path='/Doctor' component={HomeDoctor} />
                   <Route exact path='/about' component={About} />
+                  <Route exact path='/doctorapply' component={DoctorApply} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/registerPatient' component={RegisterPatient} />
                   <Route exact path='/login' component={Login} />

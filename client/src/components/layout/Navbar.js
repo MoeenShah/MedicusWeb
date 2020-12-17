@@ -35,9 +35,9 @@ const Navbar = ({ title, icon }) => {
 
   const guestLinks = (
     <Fragment>
-      <li>
+      {/* <li>
         <Link to='/register'>Register Admin</Link>
-      </li>
+      </li> */}
       <li>
         <Link to='/login'>Login Admin</Link>
       </li>
@@ -48,9 +48,9 @@ const Navbar = ({ title, icon }) => {
       <li>
         <Link to='/loginPatient'>Login Patient</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to='/registerDoctor'>Register Doctor</Link>
-      </li>
+      </li> */}
 
       <li>
         <Link to='/loginDoctor'>Login Doctor</Link>
